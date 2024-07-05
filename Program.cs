@@ -91,6 +91,17 @@ namespace Project_Sport_Events
         {
             Console.WriteLine("Enter Event ID:");
             string eventID = Console.ReadLine();
+            foreach (Events ev in events)
+            {
+                if (eventID == ev.EventID)
+                {
+                    Console.WriteLine("There is already an Event with that ID");
+                    Console.WriteLine("Press Enter to continue");
+                    Console.ReadLine();
+                    Menu();
+                    break;
+                }
+            }
             Console.WriteLine("Enter Name:");
             string name = Console.ReadLine();
             Console.WriteLine("Enter Location:");
