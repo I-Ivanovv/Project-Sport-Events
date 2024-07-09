@@ -36,6 +36,9 @@ namespace Project_Sport_Events
                 else if (menuActionChoice == "3")
                 {
                     CheckTicket();
+                    Console.WriteLine("Press Enter to continue");
+                    Console.ReadLine();
+                    Menu();
                 }
                 else if (menuActionChoice == "4")
                 {
@@ -151,7 +154,7 @@ namespace Project_Sport_Events
             {
                 if (subitie.EventID==ID)
                 {
-                    Console.WriteLine("Choose how many tickets:");
+                    Console.Write("Choose how many tickets:");
                     int numberoftickets = int.Parse(Console.ReadLine());
                     if (numberoftickets>subitie.TicketsAvailable)
                     {
@@ -162,6 +165,7 @@ namespace Project_Sport_Events
                     else
                     {
                         subitie.TicketsAvailable = subitie.TicketsAvailable - numberoftickets;
+                        Console.WriteLine("The cost of the tickets will be :" + numberoftickets*subitie.Price);
                         StreamWriter wr = new StreamWriter(filePath, false);
                         using (wr)
                         {
@@ -181,8 +185,25 @@ namespace Project_Sport_Events
         }
         static void CheckTicket()
         {
+            Console.Write("Enter the name of the Event: ");
+            string ime = Console.ReadLine();
+           
+            
+                foreach (Events ev in events)
+                {
+                    if (ev.Name.ToLower() == ime.ToLower())
+                    {
+                        Console.WriteLine("The number of tickets available is: " + ev.TicketsAvailable);
+                        Console.WriteLine("The price of the tickets is: " + ev.Price);
+                        return;
+                    }
+                }
+                Console.WriteLine("This event can't be found");
+                CheckTicket();
+            
 
-
+           
+            
         }
         static void CheckEvents()
         {
