@@ -12,7 +12,7 @@ namespace Project_Sport_Events
         public string Name { get; private set; }
         public string Location { get; private set; }
         public DateTime Date { get; private set; }
-        public int TicketsAvailable { get; private set; }
+        public int TicketsAvailable { get;  set; }
         public decimal Price { get; private set; }
         public Events (string eventID, string name, string location, DateTime date, int ticketsAvailable, decimal price)
         {

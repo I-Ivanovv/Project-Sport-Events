@@ -27,7 +27,11 @@ namespace Project_Sport_Events
                 }
                 else if (menuActionChoice == "2")
                 {
+                    CheckEvents();
                     SellTicket();
+                    Console.WriteLine("Press Enter to continue");
+                    Console.ReadLine();
+                    Menu();
                 }
                 else if (menuActionChoice == "3")
                 {
@@ -36,7 +40,10 @@ namespace Project_Sport_Events
                 else if (menuActionChoice == "4")
                 {
                     CheckEvents();
-                    
+                    Console.WriteLine("Press Enter to continue");
+                    Console.ReadLine();
+                    Menu();
+
                 }
                 else if (menuActionChoice == "X" || menuActionChoice == "x")
                 {
@@ -137,14 +144,59 @@ namespace Project_Sport_Events
         }
         static void SellTicket()
         {
+            
+            Console.Write("Choose event:");
+            string ID = Console.ReadLine();
+            foreach (Events subitie in events)
+            {
+                if (subitie.EventID==ID)
+                {
+                    Console.WriteLine("Choose how many tickets:");
+                    int numberoftickets = int.Parse(Console.ReadLine());
+                    if (numberoftickets>subitie.TicketsAvailable)
+                    {
+                        Console.WriteLine("There are not enough tickets");
+                        SellTicket();
+                        return;
+                    }
+                    else
+                    {
+                        subitie.TicketsAvailable = subitie.TicketsAvailable - numberoftickets;
+                        StreamWriter wr = new StreamWriter(filePath, false);
+                        using (wr)
+                        {
+                            foreach (Events ev in events)
+                            {
+                                wr.WriteLine(ev);
+                            }
+                        }
+                        Console.WriteLine("Tickets purchased succesfully");
+                        return;
+                    }
 
+                }
+            }
+            Console.WriteLine("This id doesnt exist");
+            SellTicket();
         }
         static void CheckTicket()
         {
 
+
         }
         static void CheckEvents()
         {
+            foreach (Events subitie in events)
+            {
+                Console.WriteLine("The ID of the event is:" + subitie.EventID);
+                Console.WriteLine("The name of the event is:" + subitie.Name);
+                Console.WriteLine("The location of the event is:" + subitie.Location);
+                Console.WriteLine("The date of the event is:" + subitie.Date);
+                Console.WriteLine("The number of the available tickets in the event are:" + subitie.TicketsAvailable);
+                Console.WriteLine("The price of the tickets in the event is:" + subitie.Price);
+                Console.WriteLine();
+
+            }
             
         }
     }
