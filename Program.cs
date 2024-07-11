@@ -14,7 +14,7 @@ namespace Project_Sport_Events
         private static List<Events> events = new List<Events>(); 
         static void Main(string[] args)
         {
-
+            
             LoadEvents();
             Menu();
             while (true)
@@ -99,7 +99,7 @@ namespace Project_Sport_Events
         }
         static void NewEvent()
         {
-            Console.WriteLine("Enter Event ID:");
+            Console.Write("Enter Event ID: ");
             string eventID = Console.ReadLine();
             foreach (Events ev in events)
             {
@@ -112,15 +112,15 @@ namespace Project_Sport_Events
                     return;
                 }
             }
-            Console.WriteLine("Enter Name:");
+            Console.Write("Enter Name: ");
             string name = Console.ReadLine();
-            Console.WriteLine("Enter Location:");
+            Console.Write("Enter Location: ");
             string location = Console.ReadLine();
-            Console.WriteLine("Enter Date:");
+            Console.Write("Enter Date: ");
             DateTime date = DateTime.Parse(Console.ReadLine());
-            Console.WriteLine("Enter Tickets Available:");
+            Console.Write("Enter Tickets Available: ");
             int ticketsAvailable = int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter Price:");
+            Console.Write("Enter Price: ");
             decimal price = int.Parse(Console.ReadLine());
             try
             {
