@@ -109,7 +109,7 @@ namespace Project_Sport_Events
                     Console.WriteLine("Press Enter to continue");
                     Console.ReadLine();
                     Menu();
-                    break;
+                    return;
                 }
             }
             Console.WriteLine("Enter Name:");
